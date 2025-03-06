@@ -1,33 +1,14 @@
 <?php
 
+include('getDB.php');
+include('Join.php');
+
 $userID = $_POST['userid'];
 $password = $_POST['pass'];
-
-function getDb(){
-$dsn = 'mysql:dbname=homero; host=127.0.0.1; charset=utf8';
-$usr = 'testusr';
-$passwd = 'hogehoge';
-    try{
-        $dbh = new PDO($dsn,$usr,$passwd);
-        print'接続成功</br>';
-    }catch(PDOExceptiion $e){
-        die("接続エラー：{$e->getMessage()}");
-    }finally{
-        // $dbh = null;
-    } 
-    return $dbh;
-}
-
 
 # アカウント登録機能の実装
 #　ここまで完了！
 # 登録成功→そのまま登録したアカウントでログインする機能、つける？
-
-function strJoin($str){
-    $quote = '\'';
-    $joined = $quote . $str . $quote;
-    return $joined;
-}
 
 class register{
     

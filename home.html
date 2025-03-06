@@ -13,14 +13,18 @@
 
     <button><a href="account.html">アカウント設定</a></button>
 
-    <form action="tweet.php" method="post">
+    <form action="insertTweet.php" method="post">
         <div>
             <label for="name">ツイートする</label>
             <input type="text" id="tweet" name="tweet">
         </div>
         <input type="submit" value="ツイート">
     </form>
-
+    <div id = "tweet">
+      <?php
+      include('tweet.php');
+      ?>
+    </div>
     <form action="index.html" method="post">
         <input type="submit" value="ログアウト">
     </form>

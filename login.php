@@ -4,32 +4,14 @@
 $userID = $_POST['userid'];
 $password = $_POST['pass'];
 
-function getDb(){
-$dsn = 'mysql:dbname=homero; host=127.0.0.1; charset=utf8';
-$usr = 'testusr';
-$passwd = 'hogehoge';
-    try{
-        $dbh = new PDO($dsn,$usr,$passwd);
-        print'接続成功</br>';
-    }catch(PDOExceptiion $e){
-        die("接続エラー：{$e->getMessage()}");
-    }finally{
-        // $dbh = null;
-    } 
-    return $dbh;
-}
+include('getDB.php');
+include('Join.php');
 
 # フォームから入ってきた値を変数にいれる
 #　変数の値を接続先のDBと照合させる
 #　内容に応じてログインの成否を行う
 #　ここまで完了！！！
 # ログインの成否をhtmlに出力する->後回しにする
-
-function strJoin($str){
-    $quote = '\'';
-    $joined = $quote . $str . $quote;
-    return $joined;
-}
 
 class login{
     
