@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <link href="main.css" rel="stylesheet" type="text/css" media="all">
   <head>
 
     <title>homero_home</title>
@@ -13,16 +14,20 @@
 
     <button><a href="account.html">アカウント設定</a></button>
 
-    <form action="insertTweet.php" method="post">
+    <form action="php/insertTweet.php" method="post">
         <div>
             <label for="name">ツイートする</label>
             <input type="text" id="tweet" name="tweet">
+            <select name="category" size="1">
+              <option>選択肢のサンプル1</option>
+              <option>選択肢のサンプル2</option>
+            </select>
         </div>
         <input type="submit" value="ツイート">
     </form>
     <div id = "tweet">
       <?php
-      include('tweet.php');
+      include('php/tweet.php');
       ?>
     </div>
     <form action="index.html" method="post">

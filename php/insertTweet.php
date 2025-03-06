@@ -5,12 +5,13 @@ include('Join.php');
 class tweeting{
     function tweetRegister(){
         $tweet = $_POST['tweet'];
+        $category = $_POST['category'];
         $dbTweet = strJoin($tweet);
-        echo $dbTweet;
+        $dbCategory = strJoin($category);
         if($tweet != null){
             echo '文字列空判定';
             $dbh = getDb();
-            $sql = "INSERT INTO tweet (TEXT) VALUES ({$dbTweet});";
+            $sql = "INSERT INTO tweet (TEXT,CATEGORY) VALUES ({$dbTweet},{$dbCategory});";
             $stmt = $dbh->prepare($sql);
             $result = $stmt->execute();
             var_dump($stmt);
