@@ -21,7 +21,7 @@ class login{
         $Pass = $_POST['pass'];
         $dbUser = strJoin($User);
         $dbPass = strJoin($Pass);
-        echo $dbUser;
+        // echo $dbUser;
         // echo $dbPass;
         $dbh = getDb();
         // $sql = "SELECT {$dbUser},{$dbPass} FROM account;";
@@ -29,8 +29,14 @@ class login{
         $stmt = $dbh->query($sql);
         $result = $stmt->fetch();
         // var_dump($stmt);
-        var_dump($result);
+        // var_dump($result);
+        session_start(); 
         if($result){
+            if (!isset($_SESSION[$User])) {
+                $_SESSION['userId'] = $User;
+                echo 'せっしょん';
+                var_dump($_SESSION['userId']);
+            }else{}
             echo 'ログイン成功';
             header("Location:http://localhost/Homero_php/home.html");
             exit();

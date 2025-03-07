@@ -14,7 +14,7 @@
 // 未）いいねボタンの作成
 // 完了）いいねボタンだけ、int扱いなので、Join.phpのtagJoin()でifでintのとき～～
 // 完了）タグ、もしくはid（HTMLの話）をいいねボタン用に出力して、フロントで見た目の変更などを可能にする
-// 未）フロントでいいねボタンの見た目（色も変わる）作成（適当にパクれ）
+// 完了）フロントでいいねボタンの見た目（色も変わる）作成（適当にパクれ）
 // 未）js(Ajax)で非同期通信の実装→DBにクリックした分のいいねを加算させる
 
 // （未）ソート機能は後でつくる→非同期通信？で作ってみよう（ソートボタンで遷移をはさみたくない）
@@ -33,8 +33,12 @@ include('Join.php');
 class showing{
     function show(){
         echo 'showメソッド呼び出し</br>';
+        echo 'ユーザー名がセッションに登録されているか確認</br>';
+        session_start(); 
+        $userId = $_SESSION["userId"];
+        echo $userId;
         $dbh = getDb();
-        $sql = "SELECT TEXT,CATEGORY,LIKED FROM tweet;";
+        $sql = "SELECT USERID,TEXT,CATEGORY,LIKED FROM tweet;";
         $stmt = $dbh->query($sql);
         $row = array();
         $row = $stmt->fetchAll(PDO::FETCH_ASSOC);

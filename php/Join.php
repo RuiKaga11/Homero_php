@@ -7,9 +7,10 @@ function strJoin($str){
 
 function tagJoin($str){
     if(is_int($str)){
-        $startTag = '<p id="nice">';
-        $endTag = '</p>';
-        $joined = $startTag . $str . $endTag;
+        $likeHeart = '<img id="likeHeart" src="img\nice_heart.png" alt="likeのハート画像" height="16px", width="16px"/>';
+        $startTag = '<button type="button" id="nice">';
+        $endTag = '</button>';
+        $joined =  $startTag . $likeHeart . $str . $endTag  ;
         return $joined;
     }else{
         $startTag = '<p>';

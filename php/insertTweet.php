@@ -4,14 +4,17 @@ include('Join.php');
 
 class tweeting{
     function tweetRegister(){
+        session_start(); 
+        $userId = $_SESSION["userId"];
         $tweet = $_POST['tweet'];
         $category = $_POST['category'];
+        $dbUserId = strJoin($userId); 
         $dbTweet = strJoin($tweet);
         $dbCategory = strJoin($category);
         if($tweet != null){
             echo '文字列空判定';
             $dbh = getDb();
-            $sql = "INSERT INTO tweet (TEXT,CATEGORY) VALUES ({$dbTweet},{$dbCategory});";
+            $sql = "INSERT INTO tweet (USERID,TEXT,CATEGORY) VALUES ({$dbUserId},{$dbTweet},{$dbCategory});";
             $stmt = $dbh->prepare($sql);
             $result = $stmt->execute();
             var_dump($stmt);
